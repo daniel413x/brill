@@ -62,7 +62,8 @@
     "prefer-destructuring": "off",
     "no-alert": "off",
     "no-array-index-key": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react/require-default-props": "off"
   },
   "overrides": [
     {

@@ -1,0 +1,7 @@
+.navbar {
+  @apply flex items-center p-4;
+
+  .end {
+    @apply flex w-full justify-end;
+  }
+}

@@ -79,7 +79,7 @@
 }
 
 :root, html, body, main {
-  @apply h-full;
+  @apply h-full bg-white;
 }
 
 a {

@@ -1,2 +1,9 @@
 export const SIGNIN_ROUTE = 'sign-in';
 export const SIGNUP_ROUTE = 'sign-up';
+export const DASHBOARD_ROUTE = 'dashboard';
+export const CONVERSATION_ROUTE = 'conversation';
+export const IMAGE_ROUTE = 'image';
+export const VIDEO_ROUTE = 'video';
+export const CODE_ROUTE = 'code';
+export const MUSIC_ROUTE = 'music';
+export const SETTINGS_ROUTE = 'settings';

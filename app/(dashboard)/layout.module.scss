@@ -1,3 +1,7 @@
-.layout {
+.main {
   @apply md:pl-72;  
+}
+
+.sidebar {
+  @apply z-[80] hidden h-full md:flex md:w-72 md:flex-col md:fixed md:inset-y-0;
 }
