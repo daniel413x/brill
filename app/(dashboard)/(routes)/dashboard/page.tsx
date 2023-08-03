@@ -1,7 +1,7 @@
+import DashboardWelcome from '@/components/ui/dashboard/DashboardWelcome';
+
 const DashboardPage = () => (
-  <div>
-    Dashboard (Protected)
-  </div>
+  <DashboardWelcome />
 );
 
 export default DashboardPage;

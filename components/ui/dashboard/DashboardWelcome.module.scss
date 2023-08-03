@@ -1,0 +1,17 @@
+.dashboardWelcome {
+  .header {
+    @apply mb-8 space-y-4;
+
+    h2 {
+      @apply text-2xl md:text-4xl font-bold text-center;
+    }
+
+    p {
+      @apply text-muted-foreground font-light text-sm md:text-lg text-center;
+    }
+  }
+
+  .toolCards {
+    @apply px-4 md:px-20 lg:px-32 space-y-4;
+  }
+}

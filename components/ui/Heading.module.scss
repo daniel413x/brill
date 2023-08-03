@@ -1,0 +1,19 @@
+.heading {
+  @apply flex items-center px-4 gap-x-3 mb-8 lg:px-8;
+
+  .iconBg {
+    @apply p-2 w-fit rounded-md;
+
+    .icon {
+      @apply w-10 h-10;
+    }
+  }
+  
+  .title {
+    @apply text-3xl font-bold;
+  }
+
+  .description {
+    @apply text-sm text-muted-foreground;
+  }
+}

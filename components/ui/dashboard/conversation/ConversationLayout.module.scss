@@ -1,0 +1,46 @@
+.conversationLayout {
+
+  form {
+    @apply rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2;
+
+    .formItem {
+      @apply col-span-12 lg:col-span-10;
+
+      .formControl {
+        @apply m-0 p-0;
+
+        .input {
+          @apply border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent;
+        }
+      }
+    }
+
+    .submitButton {
+      @apply col-span-12 lg:col-span-2 w-full;
+    }
+  }
+
+  .messages {
+    @apply space-y-4 mt-4;
+
+    .loader {
+      @apply p-8 rounded-lg w-full flex items-center justify-center bg-muted;
+    }
+
+    .messagesUl {
+      @apply flex flex-col-reverse gap-y-4 space-y-4 mt-4;
+
+      .message {
+        @apply p-8 w-full flex items-start gap-x-8 rounded-lg bg-muted;
+
+        &.user {
+          @apply bg-white border border-black/10;
+        }
+
+        .content {
+          @apply text-sm;
+        }
+      }
+    }
+  }
+}

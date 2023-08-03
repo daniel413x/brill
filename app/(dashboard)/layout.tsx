@@ -18,10 +18,12 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({
 }: DashboardLayoutProps) => (
   <>
     <Sidebar parentStyles={styles} />
-    <main className={styles.main}>
+    <div className={styles.wrapper}>
       <Navbar />
-      {children}
-    </main>
+      <main className={styles.main}>
+        {children}
+      </main>
+    </div>
   </>
 );
 

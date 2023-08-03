@@ -1,0 +1,11 @@
+.empty {
+  @apply h-full p-20 flex flex-col items-center justify-center;
+
+  .imageWrapper {
+    @apply relative h-72 w-72;
+  }
+
+  .label {
+    @apply italic text-muted-foreground text-sm text-center;
+  }
+}

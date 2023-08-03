@@ -1,7 +1,11 @@
-.main {
+.wrapper {
   @apply md:pl-72;  
 }
 
 .sidebar {
   @apply z-[80] hidden h-full md:flex md:w-72 md:flex-col md:fixed md:inset-y-0;
+}
+
+.main {
+  @apply px-4 lg:px-8;
 }

@@ -1,0 +1,11 @@
+.loader {
+  @apply h-full flex flex-col gap-y-4 items-center justify-center;
+
+  .imageWrapper {
+    @apply w-10 h-10 relative animate-spin;
+  }
+
+  .label {
+    @apply text-sm text-muted-foreground;
+  }
+}

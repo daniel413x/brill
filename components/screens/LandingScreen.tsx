@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '@/data/consts';
+import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '@/data/routes';
 
 const LandingScreen = () => (
   <main>
