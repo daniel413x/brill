@@ -1,13 +1,10 @@
+.codeLayout {
 
-  .promptForm {
+  form {
     @apply rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2;
 
-    .textField {
+    .formItem {
       @apply col-span-12 lg:col-span-10;
-
-      &.singleLine {
-        @apply lg:col-span-6;
-      }
 
       .formControl {
         @apply m-0 p-0;
@@ -18,11 +15,32 @@
       }
     }
 
-    .selectField {
-      @apply col-span-12 lg:col-span-2;
-    }
-
     .submitButton {
       @apply col-span-12 lg:col-span-2 w-full;
     }
   }
+
+  .loader {
+    @apply mt-8;
+  }
+
+  .images {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8;
+
+    .imageWrapper {
+      @apply relative aspect-square;
+    }
+
+    .footer {
+      @apply p-2;
+
+      .downloadButton {
+        @apply w-full;
+
+        .icon {
+          @apply h-4 w-4 mr-2;
+        }
+      }
+    }
+  }
+}

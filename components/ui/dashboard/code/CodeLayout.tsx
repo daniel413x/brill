@@ -92,13 +92,11 @@ const CodeLayout = () => {
       <PromptForm
         form={form}
         submit={onSubmit}
-        fields={[
-          {
-            id: 'prompt-field',
-            name: 'prompt',
-            placeholder: 'An algorithm that rotates an array 90 degrees.',
-          },
-        ]}
+        promptField={{
+          id: 'prompt-field',
+          name: 'prompt',
+          placeholder: 'An algorithm that rotates an array 90 degrees.',
+        }}
       />
       <ChatMessages
         messages={messages}

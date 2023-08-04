@@ -1,30 +1,40 @@
 'use client';
 
 import { UseFormReturn } from 'react-hook-form';
+import { InputHTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
 import styles from './PromptForm.module.scss';
 import {
   Form, FormControl, FormField, FormItem,
 } from './shadcn/form';
 import { Input } from './shadcn/input';
 import { Button } from './shadcn/button';
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from './shadcn/select';
 
-type TextPrompt = {
-  type?: 'prompt' | 'image';
-  name: string;
-  id: string;
-  placeholder?: string;
+type SelectOption = {
+  value: string;
+  label: string;
 };
+
+interface Field extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  selectOptions?: SelectOption[];
+}
 
 interface PromptFormProps {
   form: UseFormReturn<any, any, undefined>;
   submit: (values: any) => Promise<void>;
-  fields: TextPrompt[];
+  promptField: Field;
+  selectFields?: Field[];
 }
 
 const PromptForm = ({
   form,
   submit,
-  fields,
+  promptField,
+  selectFields,
 }: PromptFormProps) => {
   const { isSubmitting } = form.formState;
   return (
@@ -33,23 +43,61 @@ const PromptForm = ({
         onSubmit={form.handleSubmit(submit)}
         className={styles.promptForm}
       >
-        {fields.map((field) => (
+        <FormField
+          key={promptField.name}
+          name={promptField.name}
+          render={({ field: inputProps }) => (
+            <FormItem
+              className={cn(styles.textField, {
+                [styles.singleLine]: selectFields && selectFields.length > 0,
+              })}
+              id={promptField.id}
+            >
+              <FormControl className={styles.formControl}>
+                <Input
+                  className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                  disabled={isSubmitting}
+                  placeholder={promptField.placeholder}
+                  {...inputProps}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        {selectFields?.map((field) => (
           <FormField
+            key={field.name}
             name={field.name}
+            control={form.control}
             render={({ field: inputProps }) => (
-              <FormItem className={styles.formItem} id={field.id}>
-                <FormControl className={styles.formControl}>
-                  <Input
-                    className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                    disabled={isSubmitting}
-                    placeholder={field.placeholder}
-                    {...inputProps}
-                  />
-                </FormControl>
+              <FormItem className={styles.selectField}>
+                <Select
+                  disabled={isSubmitting}
+                  onValueChange={inputProps.onChange}
+                  value={inputProps.value}
+                  defaultValue={inputProps.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue defaultValue={field.value} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {field.selectOptions!.map((option) => (
+                      <SelectItem
+                        key={option.value}
+                        value={option.value}
+                      >
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </FormItem>
             )}
           />
         ))}
+
         <Button
           className={styles.submitButton}
           disabled={isSubmitting}

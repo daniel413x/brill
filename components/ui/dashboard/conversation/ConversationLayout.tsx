@@ -72,13 +72,11 @@ const ConversationLayout = () => {
       <PromptForm
         form={form}
         submit={onSubmit}
-        fields={[
-          {
-            id: 'prompt-field',
-            name: 'prompt',
-            placeholder: 'How do you calculate the radius of the sun?',
-          },
-        ]}
+        promptField={{
+          id: 'prompt-field',
+          name: 'prompt',
+          placeholder: 'How do you calculate the radius of the sun?',
+        }}
       />
       <ChatMessages
         messages={messages}
