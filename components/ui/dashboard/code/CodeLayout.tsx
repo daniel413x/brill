@@ -1,21 +1,35 @@
 'use client';
 
 import * as z from 'zod';
-import { MessageSquare } from 'lucide-react';
+import { Code } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { ChatCompletionRequestMessage } from 'openai';
 import axios from 'axios';
-import { CONVERSATION_ROUTE } from '@/data/routes';
+import ReactMarkdown from 'react-markdown';
+import { CODE_ROUTE } from '@/data/routes';
 import { errorCatch } from '@/utils';
 import useHasMounted from '@/hooks/useHasMounted';
-import styles from './ConversationLayout.module.scss';
+import styles from './CodeLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema } from './consts';
 import PromptForm from '../../PromptForm';
 import ChatMessages from '../../ChatMessages';
+
+const PreMarkup = ({ node, ...props }: any) => (
+  <div className={styles.pre}>
+    <pre {...props} />
+  </div>
+);
+
+const CodeMarkup = ({ node, ...props }: any) => (
+  <code
+    className={styles.code}
+    {...props}
+  />
+);
 
 interface ChatMessageProps {
   message: ChatCompletionRequestMessage;
@@ -24,12 +38,18 @@ interface ChatMessageProps {
 const ChatMessage = ({
   message,
 }: ChatMessageProps) => (
-  <p className={styles.chatMessage}>
-    {message.content}
-  </p>
+  <ReactMarkdown
+    components={{
+      pre: PreMarkup,
+      code: CodeMarkup,
+    }}
+    className={styles.message}
+  >
+    {message.content || ''}
+  </ReactMarkdown>
 );
 
-const ConversationLayout = () => {
+const CodeLayout = () => {
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,7 +66,7 @@ const ConversationLayout = () => {
         content: values.prompt,
       };
       const newMessages = [...messages, userMessage];
-      const res = await axios.post(`/api/${CONVERSATION_ROUTE}`, {
+      const res = await axios.post(`/api/${CODE_ROUTE}`, {
         messages: newMessages,
       });
       setMessages((current) => [...current, userMessage, res.data]);
@@ -61,13 +81,13 @@ const ConversationLayout = () => {
     return null;
   }
   return (
-    <div className={styles.conversationLayout}>
+    <div className={styles.codeLayout}>
       <Heading
-        title="Conversation"
-        description="Our most advanced conversation model."
-        Icon={MessageSquare}
-        iconColor="text-violet-500"
-        iconBgColor="bg-violet-500/10"
+        title="Code"
+        description="Generate code using descriptive text."
+        Icon={Code}
+        iconColor="text-green-700"
+        iconBgColor="bg-green-700/10"
       />
       <PromptForm
         form={form}
@@ -76,7 +96,7 @@ const ConversationLayout = () => {
           {
             id: 'prompt-field',
             name: 'prompt',
-            placeholder: 'How do you calculate the radius of the sun?',
+            placeholder: 'An algorithm that rotates an array 90 degrees.',
           },
         ]}
       />
@@ -89,4 +109,4 @@ const ConversationLayout = () => {
   );
 };
 
-export default ConversationLayout;
+export default CodeLayout;

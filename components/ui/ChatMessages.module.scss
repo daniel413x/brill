@@ -1,0 +1,19 @@
+  .chatMessages {
+    @apply space-y-4 mt-4;
+
+    .loader {
+      @apply p-8 rounded-lg w-full flex items-center justify-center bg-muted;
+    }
+
+    .messagesUl {
+      @apply flex flex-col-reverse gap-y-4 space-y-4 mt-4;
+
+      .message {
+        @apply text-sm p-8 w-full flex items-start gap-x-8 rounded-lg bg-muted;
+
+        &.user {
+          @apply bg-white border border-black/10;
+        }
+      }
+    }
+  }
