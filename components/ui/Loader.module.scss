@@ -1,11 +1,15 @@
 .loader {
-  @apply p-8 h-full flex flex-col gap-y-4 items-center justify-center;
+  @apply p-8 h-full flex flex-col gap-y-4 items-center justify-center bg-muted;
 
   .imageWrapper {
     @apply w-10 h-10 relative animate-spin;
+
+    img {
+      @apply rounded-lg;
+    }
   }
 
   .label {
-    @apply text-sm text-muted-foreground;
+    @apply text-sm font-black text-violet-400;
   }
 }

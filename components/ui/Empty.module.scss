@@ -6,6 +6,6 @@
   }
 
   .label {
-    @apply italic text-muted-foreground text-sm text-center;
+    @apply italic font-light text-muted-foreground text-sm text-center opacity-75;
   }
 }
