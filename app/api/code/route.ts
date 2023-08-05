@@ -1,7 +1,7 @@
 import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import { ChatCompletionRequestMessage } from 'openai';
-import { configuration, openai } from '../config';
+import { openaiConfig, openai } from '../config';
 
 const instruction: ChatCompletionRequestMessage = {
   role: 'system',
@@ -17,7 +17,7 @@ export const POST = async (req: Request) => {
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 });
     }
-    if (!configuration.apiKey) {
+    if (!openaiConfig.apiKey) {
       return new NextResponse('OpenAI API Key not configured', { status: 500 });
     }
     if (!messages) {

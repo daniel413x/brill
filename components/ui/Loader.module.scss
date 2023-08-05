@@ -1,5 +1,5 @@
 .loader {
-  @apply h-full flex flex-col gap-y-4 items-center justify-center;
+  @apply p-8 h-full flex flex-col gap-y-4 items-center justify-center;
 
   .imageWrapper {
     @apply w-10 h-10 relative animate-spin;

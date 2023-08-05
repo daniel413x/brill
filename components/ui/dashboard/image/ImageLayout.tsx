@@ -15,10 +15,44 @@ import styles from './ImageLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema, amountOptions, resolutionOptions } from './consts';
 import PromptForm from '../../PromptForm';
-import Empty from '../../Empty';
-import Loader from '../../Loader';
 import { Card, CardFooter } from '../../shadcn/card';
 import { Button } from '../../shadcn/button';
+import GeneratedMedia from '../../GeneratedMedia';
+
+interface GeneratedImageProps {
+  media: string;
+}
+
+const GeneratedImage = ({
+  media,
+}: GeneratedImageProps) => (
+  <Card
+    key={media}
+    className={styles.generatedImage}
+  >
+    <div className={styles.imageWrapper}>
+      <Image
+        alt="image"
+        fill
+        src={media}
+      />
+    </div>
+    <CardFooter
+      className={styles.footer}
+    >
+      <Button
+        onClick={() => window.open(media)}
+        variant="secondary"
+        className={styles.downloadButton}
+      >
+        <Download
+          className={styles.icon}
+        />
+        Download
+      </Button>
+    </CardFooter>
+  </Card>
+);
 
 const ImageLayout = () => {
   const [images, setImages] = useState<string[]>([]);
@@ -49,7 +83,7 @@ const ImageLayout = () => {
     return null;
   }
   return (
-    <div className={styles.codeLayout}>
+    <div className={styles.imageLayout}>
       <Heading
         title="Image Generation"
         description="Turn your description into an image."
@@ -78,49 +112,11 @@ const ImageLayout = () => {
           },
         ]}
       />
-      {/* {images.length === 0 && isSubmitting && ( */}
-      <Loader
-        parentStyles={styles}
+      <GeneratedMedia
+        mediaArray={images}
+        isSubmitting={isSubmitting}
+        MediaComponent={GeneratedImage}
       />
-      {/* )} */}
-      <div className={styles.images}>
-        {!isSubmitting && images.length === 0 && (
-          <Empty
-            label="No conversation history"
-          />
-        )}
-        {images.length > 0 && isSubmitting && (
-          <Loader />
-        )}
-        {images.map((src) => (
-          <Card
-            key={src}
-            className={styles.imageCard}
-          >
-            <div className={styles.imageWrapper}>
-              <Image
-                alt="image"
-                fill
-                src={src}
-              />
-            </div>
-            <CardFooter
-              className={styles.footer}
-            >
-              <Button
-                onClick={() => window.open(src)}
-                variant="secondary"
-                className={styles.downloadButton}
-              >
-                <Download
-                  className={styles.icon}
-                />
-                Download
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
     </div>
   );
 };

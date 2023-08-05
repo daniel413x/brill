@@ -19,9 +19,7 @@ const ChatMessages = ({
 }: ChatMessagesProps) => (
   <div className={styles.chatMessages}>
     {isSubmitting && (
-      <Loader
-        parentStyles={styles}
-      />
+      <Loader />
     )}
     {!isSubmitting && messages.length === 0 && (
     <Empty label="No conversation history" />
