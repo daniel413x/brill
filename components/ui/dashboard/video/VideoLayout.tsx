@@ -66,6 +66,7 @@ const VideoLayout = () => {
       <PromptForm
         form={form}
         submit={onSubmit}
+        buttonColor="bg-orange-700"
         promptField={{
           id: 'prompt-field',
           name: 'prompt',

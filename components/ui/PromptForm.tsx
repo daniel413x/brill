@@ -28,6 +28,7 @@ interface PromptFormProps {
   submit: (values: any) => Promise<void>;
   promptField: Field;
   selectFields?: Field[];
+  buttonColor?: string;
 }
 
 const PromptForm = ({
@@ -35,6 +36,7 @@ const PromptForm = ({
   submit,
   promptField,
   selectFields,
+  buttonColor,
 }: PromptFormProps) => {
   const { isSubmitting } = form.formState;
   return (
@@ -99,7 +101,7 @@ const PromptForm = ({
         ))}
 
         <Button
-          className={styles.submitButton}
+          className={cn(styles.submitButton, buttonColor)}
           disabled={isSubmitting}
           type="submit"
         >

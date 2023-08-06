@@ -94,6 +94,7 @@ const ImageLayout = () => {
       <PromptForm
         form={form}
         submit={onSubmit}
+        buttonColor="bg-pink-700"
         promptField={{
           name: 'prompt',
           id: 'prompt-field',

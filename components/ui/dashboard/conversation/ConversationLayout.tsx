@@ -77,6 +77,7 @@ const ConversationLayout = () => {
           name: 'prompt',
           placeholder: 'How do you calculate the radius of the sun?',
         }}
+        buttonColor="bg-violet-500"
       />
       <ChatMessages
         messages={messages}

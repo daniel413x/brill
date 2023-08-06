@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon,
 } from 'lucide-react';

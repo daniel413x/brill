@@ -97,6 +97,7 @@ const CodeLayout = () => {
           name: 'prompt',
           placeholder: 'An algorithm that rotates an array 90 degrees.',
         }}
+        buttonColor="bg-green-700"
       />
       <ChatMessages
         messages={messages}

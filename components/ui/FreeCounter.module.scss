@@ -1,0 +1,35 @@
+.freeCounter {
+  @apply px-3;
+
+  .card {
+    @apply bg-white/10 border-0;
+
+    .content {
+      @apply py-6;
+
+      .counter {
+        @apply text-center text-sm text-white mb-4 space-y-2;
+
+        .progress {
+          @apply h-3 bg-primary;
+        }
+      }
+      
+      .upgradeButton {
+        @apply w-full;
+        
+        .zap {
+          @apply w-4 h-4 ml-2 fill-white;
+        }
+      }
+    }
+  }
+
+  .imageWrapper {
+    @apply relative h-72 w-72;
+  }
+
+  .label {
+    @apply italic font-light text-muted-foreground text-sm text-center opacity-75;
+  }
+}

@@ -10,7 +10,7 @@ const Empty = ({
 }: EmptyProps) => (
   <div className={styles.empty}>
     <div className={styles.imageWrapper}>
-      <Image src="/images/empty.png" fill alt="Empty" />
+      <Image src="/images/empty.png" fill alt="Empty" priority />
     </div>
     <p className={styles.label}>
       {label}

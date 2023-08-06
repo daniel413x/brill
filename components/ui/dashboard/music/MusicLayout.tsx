@@ -66,6 +66,7 @@ const MusicLayout = () => {
       <PromptForm
         form={form}
         submit={onSubmit}
+        buttonColor="bg-emerald-500"
         promptField={{
           id: 'prompt-field',
           name: 'prompt',

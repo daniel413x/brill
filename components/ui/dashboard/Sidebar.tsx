@@ -12,6 +12,7 @@ import { SCSSModule } from '@/types';
 import { cobbleStyles } from '@/utils';
 import { dashboardSidebarLinks } from '@/data/arrays';
 import defaultStyles from './Sidebar.module.scss';
+import FreeCounter from '../FreeCounter';
 
 const poppins = Poppins({
   weight: '600',
@@ -20,44 +21,49 @@ const poppins = Poppins({
 
 interface SidebarStyles {
   parentStyles?: SCSSModule;
+  apiLimitCount: number;
 }
 
 const Sidebar = ({
   parentStyles,
+  apiLimitCount = 0,
 }: SidebarStyles) => {
   const styles = cobbleStyles(defaultStyles, parentStyles);
   const pathname = usePathname();
   return (
     <div className={styles.sidebar}>
-      <Link className={styles.logo} href={`/${DASHBOARD_ROUTE}`}>
-        <div className={styles.imgWrapper}>
-          <Image
-            width={300}
-            height={300}
-            src="/logos/brill-logo-c.png"
-            alt="logo"
-          />
-        </div>
-        <h1 className={poppins.className}>brill.ai</h1>
-      </Link>
-      <ul className={styles.links}>
-        {dashboardSidebarLinks.map((route) => (
-          <li key={route.href}>
-            <Link
-              href={route.href}
-              key={route.href}
-              className={cn(styles.link, {
-                [styles.active]: pathname === route.href,
-              })}
-            >
-              <div className={styles.inner}>
-                <route.Icon className={cn(styles.icon, route.color)} />
-                {route.label}
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <Link className={styles.logo} href={`/${DASHBOARD_ROUTE}`}>
+          <div className={styles.imgWrapper}>
+            <Image
+              width={300}
+              height={300}
+              src="/logos/brill-logo-c.png"
+              alt="logo"
+            />
+          </div>
+          <h1 className={poppins.className}>brill.ai</h1>
+        </Link>
+        <ul className={styles.links}>
+          {dashboardSidebarLinks.map((route) => (
+            <li key={route.href}>
+              <Link
+                href={route.href}
+                key={route.href}
+                className={cn(styles.link, {
+                  [styles.active]: pathname === route.href,
+                })}
+              >
+                <div className={styles.inner}>
+                  <route.Icon className={cn(styles.icon, route.color)} />
+                  {route.label}
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <FreeCounter apiLimitCount={apiLimitCount} />
     </div>
   );
 };
