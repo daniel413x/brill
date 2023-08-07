@@ -1,4 +1,4 @@
-import LandingScreen from '@/components/screens/LandingScreen';
+import LandingScreen from '@/components/ui/landing/LandingScreen';
 
 const LandingPage = () => (
   <LandingScreen />

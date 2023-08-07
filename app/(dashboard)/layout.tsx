@@ -22,7 +22,7 @@ const DashboardLayout: FC<DashboardLayoutProps> = async ({
     <>
       <Sidebar parentStyles={styles} apiLimitCount={apiLimitCount} />
       <div className={styles.wrapper}>
-        <Navbar />
+        <Navbar apiLimitCount={apiLimitCount} />
         <main className={styles.main}>
           {children}
         </main>

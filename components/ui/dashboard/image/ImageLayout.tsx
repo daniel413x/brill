@@ -9,8 +9,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import { IMAGE_ROUTE } from '@/data/routes';
-import { errorCatch } from '@/utils';
 import useHasMounted from '@/hooks/useHasMounted';
+import useProModal from '@/hooks/useProModal';
 import styles from './ImageLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema, amountOptions, resolutionOptions } from './consts';
@@ -55,6 +55,7 @@ const GeneratedImage = ({
 );
 
 const ImageLayout = () => {
+  const proModal = useProModal();
   const [images, setImages] = useState<string[]>([]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -74,7 +75,9 @@ const ImageLayout = () => {
       setImages(urls);
       form.reset();
     } catch (error: any) {
-      console.log(errorCatch(error));
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

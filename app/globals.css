@@ -80,7 +80,6 @@
 
 :root, html, body, main {
   @apply h-full bg-white;
-  /* filter: brightness(0.7); */
 }
 
 a {

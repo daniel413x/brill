@@ -10,8 +10,8 @@ import { ChatCompletionRequestMessage } from 'openai';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import { CODE_ROUTE } from '@/data/routes';
-import { errorCatch } from '@/utils';
 import useHasMounted from '@/hooks/useHasMounted';
+import useProModal from '@/hooks/useProModal';
 import styles from './CodeLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema } from './consts';
@@ -50,6 +50,7 @@ const ChatMessage = ({
 );
 
 const CodeLayout = () => {
+  const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -72,7 +73,9 @@ const CodeLayout = () => {
       setMessages((current) => [...current, userMessage, res.data]);
       form.reset();
     } catch (error: any) {
-      console.log(errorCatch(error));
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

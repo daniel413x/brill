@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import axios from 'axios';
 import { VIDEO_ROUTE } from '@/data/routes';
-import { errorCatch } from '@/utils';
+import useProModal from '@/hooks/useProModal';
 import useHasMounted from '@/hooks/useHasMounted';
 import styles from './VideoLayout.module.scss';
 import Heading from '../../Heading';
@@ -30,6 +30,7 @@ const VideoItem = ({
 );
 
 const VideoLayout = () => {
+  const proModal = useProModal();
   const [video, setVideo] = useState<string[]>([]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,7 +47,9 @@ const VideoLayout = () => {
       setVideo([res.data[0]]);
       form.reset();
     } catch (error: any) {
-      console.log(errorCatch(error));
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

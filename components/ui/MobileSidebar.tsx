@@ -1,12 +1,17 @@
 'use client';
 
-import { FC } from 'react';
 import { Menu } from 'lucide-react';
 import useHasMounted from '@/hooks/useHasMounted';
 import { Sheet, SheetContent, SheetTrigger } from './shadcn/sheet';
 import Sidebar from './dashboard/Sidebar';
 
-const MobileSidebar: FC = () => {
+interface MobileSideProps {
+  apiLimitCount: number;
+}
+
+const MobileSidebar = ({
+  apiLimitCount,
+}: MobileSideProps) => {
   if (!useHasMounted()) {
     return null;
   }
@@ -16,7 +21,7 @@ const MobileSidebar: FC = () => {
         <Menu />
       </SheetTrigger>
       <SheetContent side="left" className="p-0 md:hidden">
-        <Sidebar />
+        <Sidebar apiLimitCount={apiLimitCount} />
       </SheetContent>
     </Sheet>
   );

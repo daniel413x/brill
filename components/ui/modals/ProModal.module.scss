@@ -1,0 +1,39 @@
+.badgeWrapper {
+  @apply flex items-center gap-x-2 font-bold text-xl;
+
+  .badge {
+    @apply uppercase text-sm py-1;
+  }
+}
+
+.card {
+  @apply p-3 border-black/5 flex items-center justify-between;
+
+  .wrapper {
+    @apply flex items-center gap-x-4;
+
+    .iconWrapper {
+      @apply p-2 w-fit rounded-md;
+
+      .icon {
+        @apply flex;
+      }
+    }
+
+    .label {
+      @apply font-semibold text-sm;
+    }
+  }
+
+  .check {
+    @apply text-primary w-5 h-5;
+  }
+}
+
+.upgradeButton {
+  @apply w-full md:w-max;
+
+  .icon {
+    @apply w-4 h-4 ml-2 fill-white;
+  }
+}

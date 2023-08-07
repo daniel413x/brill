@@ -1,5 +1,5 @@
 .sidebar {
-  @apply px-2 py-6 flex flex-col justify-between h-full bg-[#111827] text-white md:inset-y-0 bg-gray-900;
+  @apply px-2 py-6 flex flex-col justify-between h-full bg-[#111827] text-white md:inset-y-0 bg-gray-900 z-10;
 
   .logo {
     @apply w-max flex items-center pl-0;
