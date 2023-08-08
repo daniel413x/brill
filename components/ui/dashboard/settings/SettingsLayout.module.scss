@@ -1,0 +1,10 @@
+.settingsLayout {
+
+  .subscription {
+    @apply px-4 lg:px-8 space-y-4;
+
+    .status {
+      @apply text-muted-foreground text-sm;
+    }
+  }
+}
