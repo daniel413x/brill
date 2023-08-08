@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
+import { toast } from 'react-hot-toast';
 import { IMAGE_ROUTE } from '@/data/routes';
 import useHasMounted from '@/hooks/useHasMounted';
 import useProModal from '@/hooks/useProModal';
@@ -77,6 +78,8 @@ const ImageLayout = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error('Something went wrong');
       }
     } finally {
       router.refresh();

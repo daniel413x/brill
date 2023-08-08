@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import { VIDEO_ROUTE } from '@/data/routes';
 import useProModal from '@/hooks/useProModal';
 import useHasMounted from '@/hooks/useHasMounted';
@@ -49,6 +50,8 @@ const VideoLayout = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error('Something went wrong');
       }
     } finally {
       router.refresh();
