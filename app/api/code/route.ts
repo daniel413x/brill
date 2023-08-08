@@ -2,6 +2,7 @@ import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import { ChatCompletionRequestMessage } from 'openai';
 import { checkApiLimit, incrementApiLimit } from '@/lib/api-limit';
+import checkSubscription from '@/lib/checkSubscription';
 import { openaiConfig, openai } from '../config';
 
 const instruction: ChatCompletionRequestMessage = {
@@ -9,7 +10,6 @@ const instruction: ChatCompletionRequestMessage = {
   content: 'You are a code generator. You must answer only in markdown code snippets. Use code comments for explanations.',
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const POST = async (req: Request) => {
   try {
     const { userId } = auth();
@@ -25,7 +25,8 @@ export const POST = async (req: Request) => {
       return new NextResponse('Messages are required', { status: 400 });
     }
     const freeTrial = await checkApiLimit();
-    if (!freeTrial) {
+    const isSubscribed = await checkSubscription();
+    if (!isSubscribed && !freeTrial) {
       return new NextResponse('Free trial has expired.', { status: 403 });
     }
     const res = await openai.createChatCompletion({
@@ -35,7 +36,9 @@ export const POST = async (req: Request) => {
         ...messages,
       ],
     });
-    await incrementApiLimit();
+    if (!isSubscribed) {
+      await incrementApiLimit();
+    }
     return NextResponse.json(res.data.choices[0].message);
   } catch (error: any) {
     return new NextResponse('Error', { status: 500 });

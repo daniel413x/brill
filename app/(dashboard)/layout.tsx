@@ -4,6 +4,7 @@ import { Children } from '@/types';
 import Sidebar from '@/components/ui/dashboard/Sidebar';
 import Navbar from '@/components/ui/Navbar';
 import { getApiLimitCount } from '@/lib/api-limit';
+import checkSubscription from '@/lib/checkSubscription';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
@@ -18,11 +19,12 @@ const DashboardLayout: FC<DashboardLayoutProps> = async ({
   children,
 }: DashboardLayoutProps) => {
   const apiLimitCount = await getApiLimitCount();
+  const isPro = await checkSubscription();
   return (
     <>
-      <Sidebar parentStyles={styles} apiLimitCount={apiLimitCount} />
+      <Sidebar parentStyles={styles} apiLimitCount={apiLimitCount} isPro={isPro} />
       <div className={styles.wrapper}>
-        <Navbar apiLimitCount={apiLimitCount} />
+        <Navbar apiLimitCount={apiLimitCount} isPro={isPro} />
         <main className={styles.main}>
           {children}
         </main>

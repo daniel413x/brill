@@ -1,5 +1,5 @@
 .navbar {
-  @apply flex items-center p-4;
+  @apply flex items-center p-4 min-h-[64px];
 
   .end {
     @apply flex w-full justify-end;

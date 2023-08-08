@@ -4,26 +4,23 @@ import { Zap } from 'lucide-react';
 import { MAX_FREE_COUNTS } from '@/data/consts';
 import { Card, CardContent } from '@/components/ui/shadcn/card';
 import { Button } from '@/components/ui/shadcn/button';
-import useHasMounted from '@/hooks/useHasMounted';
 import { Progress } from '@/components/ui/shadcn/progress';
 import useProModal from '@/hooks/useProModal';
 import styles from './FreeCounter.module.scss';
 
+interface FreeCounterProps {
+  isPro: boolean;
+  apiLimitCount: number;
+}
+
 const FreeCounter = ({
-  // isPro = false,
+  isPro = false,
   apiLimitCount = 0,
-}: {
-  // isPro: boolean,
-  apiLimitCount: number
-}) => {
+}: FreeCounterProps) => {
   const proModal = useProModal();
-  if (!useHasMounted) return null;
-  // if (isPro) {
-  //   return null;
-  // }
+  if (isPro) return null;
   return (
     <div className={styles.freeCounter}>
-      {/* you might need to use the classname tailwind approach */}
       <Card className={styles.card}>
         <CardContent className={styles.content}>
           <div className={styles.counter}>
@@ -38,7 +35,6 @@ const FreeCounter = ({
             </p>
             <Progress className={styles.counter} value={(apiLimitCount / MAX_FREE_COUNTS) * 100} />
           </div>
-          {/* <Button variant="premium" className={styles.upgradeButton}> */}
           <Button onClick={proModal.onOpen} variant="premium" className={styles.upgradeButton}>
             Upgrade
             <Zap className={styles.zap} />

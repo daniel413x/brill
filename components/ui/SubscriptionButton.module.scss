@@ -1,0 +1,7 @@
+.subscriptionButton {
+  @apply w-full md:w-max;
+
+  .icon {
+    @apply w-4 h-4 ml-2 fill-white;
+  }
+}

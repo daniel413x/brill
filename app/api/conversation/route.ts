@@ -1,9 +1,9 @@
 import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import { checkApiLimit, incrementApiLimit } from '@/lib/api-limit';
+import checkSubscription from '@/lib/checkSubscription';
 import { openaiConfig, openai } from '../config';
 
-// eslint-disable-next-line import/prefer-default-export
 export const POST = async (req: Request) => {
   try {
     const { userId } = auth();
@@ -19,14 +19,17 @@ export const POST = async (req: Request) => {
       return new NextResponse('Messages are required', { status: 400 });
     }
     const freeTrial = await checkApiLimit();
-    if (!freeTrial) {
+    const isSubscribed = await checkSubscription();
+    if (!isSubscribed && !freeTrial) {
       return new NextResponse('Free trial has expired.', { status: 403 });
     }
     const res = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages,
     });
-    await incrementApiLimit();
+    if (!isSubscribed) {
+      await incrementApiLimit();
+    }
     return NextResponse.json(res.data.choices[0].message);
   } catch (error: any) {
     return new NextResponse('Error', { status: 500 });

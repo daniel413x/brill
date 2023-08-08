@@ -7,10 +7,12 @@ import Sidebar from './dashboard/Sidebar';
 
 interface MobileSideProps {
   apiLimitCount: number;
+  isPro: boolean;
 }
 
 const MobileSidebar = ({
   apiLimitCount,
+  isPro,
 }: MobileSideProps) => {
   if (!useHasMounted()) {
     return null;
@@ -21,7 +23,7 @@ const MobileSidebar = ({
         <Menu />
       </SheetTrigger>
       <SheetContent side="left" className="p-0 md:hidden">
-        <Sidebar apiLimitCount={apiLimitCount} />
+        <Sidebar apiLimitCount={apiLimitCount} isPro={isPro} />
       </SheetContent>
     </Sheet>
   );

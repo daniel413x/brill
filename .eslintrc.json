@@ -63,7 +63,8 @@
     "no-alert": "off",
     "no-array-index-key": "off",
     "react/no-array-index-key": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off"
   },
   "overrides": [
     {

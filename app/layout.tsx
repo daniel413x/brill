@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 import ModalProvider from '@/components/providers/ModalProvider';
+import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +24,7 @@ const RootLayout = ({
 }: RootLayoutProps) => (
   <ClerkProvider>
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(inter.className, 'wpsn-snappable')}>
         <ModalProvider />
         {children}
       </body>

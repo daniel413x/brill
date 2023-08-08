@@ -19,15 +19,17 @@ const poppins = Poppins({
   subsets: ['latin'],
 });
 
-interface SidebarStyles {
+interface SidebarProps {
   parentStyles?: SCSSModule;
   apiLimitCount: number;
+  isPro: boolean;
 }
 
 const Sidebar = ({
   parentStyles,
+  isPro,
   apiLimitCount = 0,
-}: SidebarStyles) => {
+}: SidebarProps) => {
   const styles = cobbleStyles(defaultStyles, parentStyles);
   const pathname = usePathname();
   return (
@@ -63,7 +65,7 @@ const Sidebar = ({
           ))}
         </ul>
       </div>
-      <FreeCounter apiLimitCount={apiLimitCount} />
+      <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} />
     </div>
   );
 };

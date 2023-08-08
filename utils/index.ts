@@ -1,6 +1,5 @@
 import { SCSSModule } from '@/types';
 
-// eslint-disable-next-line import/prefer-default-export
 export const cobbleStyles = (
   defaultStyles: SCSSModule,
   parentStyles: SCSSModule | undefined,
@@ -30,6 +29,8 @@ export const cobbleStyles = (
   }
   return newStylesObj;
 };
+
+export const absoluteUrl = (path: string) => `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 
 export const errorCatch = (error: any): string => {
   if (error.response && error.response.data) {

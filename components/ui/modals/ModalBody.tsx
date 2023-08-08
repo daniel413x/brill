@@ -1,8 +1,3 @@
-'use client';
-
-import {
-  DialogDescription,
-} from '@/components/ui/shadcn/dialog';
 import { Children } from '@/types';
 import styles from './ModalBody.module.scss';
 
@@ -13,9 +8,9 @@ interface ModalBodyProps {
 const ModalBody = ({
   children,
 }: ModalBodyProps) => (
-  <DialogDescription className={styles.description}>
+  <div className={styles.description}>
     {children}
-  </DialogDescription>
+  </div>
 );
 
 export default ModalBody;
