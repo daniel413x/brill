@@ -5,6 +5,7 @@ import Sidebar from '@/components/ui/dashboard/Sidebar';
 import Navbar from '@/components/ui/Navbar';
 import { getApiLimitCount } from '@/lib/api-limit';
 import checkSubscription from '@/lib/checkSubscription';
+import CrispProvider from '@/components/providers/CrispProvider';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ const DashboardLayout: FC<DashboardLayoutProps> = async ({
   const isPro = await checkSubscription();
   return (
     <>
+      <CrispProvider />
       <Sidebar parentStyles={styles} apiLimitCount={apiLimitCount} isPro={isPro} />
       <div className={styles.wrapper}>
         <Navbar apiLimitCount={apiLimitCount} isPro={isPro} />
