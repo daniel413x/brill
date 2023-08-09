@@ -1,0 +1,13 @@
+.landingFooter {
+  @apply p-4 flex justify-center items-center text-white;
+
+  background-color: rgb(0 0 0 / 0.1);
+
+  .brill {
+    @apply pe-4;
+  }
+
+  a {
+    @apply p-4 bg-transparent;
+  }
+}

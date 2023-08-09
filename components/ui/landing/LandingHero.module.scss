@@ -1,0 +1,23 @@
+.landingHero {
+  @apply text-white font-bold py-36 text-center space-y-5;
+
+  .innerWrapper {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl space-y-5 font-extrabold;
+
+    h1 {
+      @apply text-sky-500;
+    }
+
+    .typewriterWrapper {
+      @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 h-[68px];
+    }
+
+    .byline {
+      @apply text-sm font-light text-zinc-400;
+    }
+
+    .startButton {
+      @apply md:text-lg p-4 md:p-6 rounded-full font-semibold;
+    }
+  }
+}

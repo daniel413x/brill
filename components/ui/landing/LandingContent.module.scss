@@ -1,0 +1,38 @@
+.landingContent {
+  @apply px-10 pb-20;
+  
+  .header {
+    @apply text-center text-4xl text-white font-extrabold mb-10;
+  }
+
+  .testimonials {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+    
+    .testimonial {
+      @apply bg-[#192339] border-none text-white overflow-hidden;
+
+      .testimonialTitle {
+
+        .reviewer {
+          @apply flex gap-2 text-lg w-full items-center;
+
+          .nameCol {
+            @apply flex flex-col;
+          }
+
+          .avatar {
+            @apply flex items-center justify-center h-12 w-12 rounded-full text-muted-foreground;
+
+            background-color: rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+
+      .testimonialContent {
+        @apply pt-2 px-0;
+
+        font-weight: 300;
+      }
+    }
+  }
+}

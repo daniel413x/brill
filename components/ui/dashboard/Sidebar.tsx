@@ -13,6 +13,7 @@ import { cobbleStyles } from '@/utils';
 import { dashboardSidebarLinks } from '@/data/arrays';
 import defaultStyles from './Sidebar.module.scss';
 import FreeCounter from '../FreeCounter';
+import SocialMedia from '../SocialMedia';
 
 const poppins = Poppins({
   weight: '600',
@@ -65,6 +66,7 @@ const Sidebar = ({
           ))}
         </ul>
       </div>
+      <SocialMedia />
       <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} />
     </div>
   );

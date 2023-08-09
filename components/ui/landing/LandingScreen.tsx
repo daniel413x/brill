@@ -1,18 +1,15 @@
-import Link from 'next/link';
-import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '@/data/routes';
+import LandingContent from './LandingContent';
+import LandingFooter from './LandingFooter';
+import LandingHero from './LandingHero';
+import LandingNavbar from './LandingNavbar';
 
 const LandingScreen = () => (
-  <main>
-    Landing Page (Unprotected)
-    <div>
-      <Link href={SIGNIN_ROUTE}>
-        Login
-      </Link>
-      <Link href={SIGNUP_ROUTE}>
-        Register
-      </Link>
-    </div>
-  </main>
+  <>
+    <LandingNavbar />
+    <LandingHero />
+    <LandingContent />
+    <LandingFooter />
+  </>
 );
 
 export default LandingScreen;

@@ -1,0 +1,7 @@
+.socialMedia {
+  @apply flex justify-center items-center text-white;
+
+  a {
+    @apply p-4 bg-transparent;
+  }
+}

@@ -1,0 +1,29 @@
+.landingNavbar {
+  @apply p-4 flex items-center justify-between;
+
+  background-color: rgb(0 0 0 / 0.1);
+
+  a {
+    @apply bg-transparent;
+  }
+
+  .link {
+    @apply flex items-center;
+
+    .imageWrapper {
+      @apply relative h-8 w-8 mr-1;
+    }
+
+    .header {
+      @apply text-2xl font-bold text-white;
+    }
+  }
+
+  .buttons {
+    @apply flex items-center gap-x-2;
+
+    .getStartedButton {
+      @apply rounded-full;
+    }
+  }
+}

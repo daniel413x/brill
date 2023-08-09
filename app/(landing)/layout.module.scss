@@ -1,0 +1,7 @@
+.main {
+  @apply bg-[#111827] overflow-auto;
+}
+
+.inner {
+  @apply mx-auto max-w-screen-xl h-full w-full;
+}
