@@ -9,7 +9,10 @@ import CrispProvider from '@/components/providers/CrispProvider';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
-  title: 'Authentication',
+  title: {
+    template: '%s | brill.ai',
+    default: 'Dashboard',
+  },
 };
 
 interface DashboardLayoutProps {

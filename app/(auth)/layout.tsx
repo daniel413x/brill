@@ -4,7 +4,7 @@ import { Children } from '@/types';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
-  title: 'Authentication',
+  title: 'Authentication | brill.ai',
 };
 
 interface AuthLayoutProps {
