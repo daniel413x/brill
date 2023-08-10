@@ -13,11 +13,18 @@ import { toast } from 'react-hot-toast';
 import { CODE_ROUTE } from '@/data/routes';
 import useHasMounted from '@/hooks/useHasMounted';
 import useProModal from '@/hooks/useProModal';
+import { randomInt } from '@/utils';
 import styles from './CodeLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema } from './consts';
 import PromptForm from '../../PromptForm';
 import ChatMessages from '../../ChatMessages';
+
+const placeholders = [
+  'An algorithm that rotates an array 90 degrees.',
+  'An algorithm that reverses a linked list.',
+  'A binary search algorithm.',
+];
 
 const PreMarkup = ({ node, ...props }: any) => (
   <div className={styles.pre}>
@@ -53,6 +60,7 @@ const ChatMessage = ({
 const CodeLayout = () => {
   const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [placeholder] = useState(placeholders[randomInt(placeholders.length)]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -101,7 +109,7 @@ const CodeLayout = () => {
         promptField={{
           id: 'prompt-field',
           name: 'prompt',
-          placeholder: 'An algorithm that rotates an array 90 degrees.',
+          placeholder,
         }}
         buttonColor="bg-green-700"
       />

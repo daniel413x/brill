@@ -12,6 +12,7 @@ import { toast } from 'react-hot-toast';
 import { IMAGE_ROUTE } from '@/data/routes';
 import useHasMounted from '@/hooks/useHasMounted';
 import useProModal from '@/hooks/useProModal';
+import { randomInt } from '@/utils';
 import styles from './ImageLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema, amountOptions, resolutionOptions } from './consts';
@@ -19,6 +20,14 @@ import PromptForm from '../../PromptForm';
 import { Card, CardFooter } from '../../shadcn/card';
 import { Button } from '../../shadcn/button';
 import GeneratedMedia from '../../GeneratedMedia';
+
+const placeholders = [
+  'A California skateboard park.',
+  'Cumulus clouds over a beach.',
+  'A horse in the Swiss Alps',
+  'A busy metropolitan street.',
+  'Sunset over a bustling cityscape.',
+];
 
 interface GeneratedImageProps {
   media: string;
@@ -58,6 +67,7 @@ const GeneratedImage = ({
 const ImageLayout = () => {
   const proModal = useProModal();
   const [images, setImages] = useState<string[]>([]);
+  const [placeholder] = useState(placeholders[randomInt(placeholders.length)]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -104,7 +114,7 @@ const ImageLayout = () => {
         promptField={{
           name: 'prompt',
           id: 'prompt-field',
-          placeholder: 'A horse in the Swiss Alps',
+          placeholder,
         }}
         selectFields={[
           {

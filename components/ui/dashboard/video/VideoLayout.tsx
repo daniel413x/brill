@@ -11,11 +11,17 @@ import { toast } from 'react-hot-toast';
 import { VIDEO_ROUTE } from '@/data/routes';
 import useProModal from '@/hooks/useProModal';
 import useHasMounted from '@/hooks/useHasMounted';
+import { randomInt } from '@/utils';
 import styles from './VideoLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema } from './consts';
 import PromptForm from '../../PromptForm';
 import GeneratedMedia from '../../GeneratedMedia';
+
+const placeholders = [
+  'Clown fish swimming around a coral reef.',
+  'Overhead camera of a crowded concert.',
+];
 
 interface VideoItemProps {
   media: string;
@@ -33,6 +39,7 @@ const VideoItem = ({
 const VideoLayout = () => {
   const proModal = useProModal();
   const [video, setVideo] = useState<string[]>([]);
+  const [placeholder] = useState(placeholders[randomInt(placeholders.length)]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -76,7 +83,7 @@ const VideoLayout = () => {
         promptField={{
           id: 'prompt-field',
           name: 'prompt',
-          placeholder: 'Clown fish swimming around a coral reef',
+          placeholder,
         }}
       />
       <GeneratedMedia

@@ -11,11 +11,20 @@ import { toast } from 'react-hot-toast';
 import { MUSIC_ROUTE } from '@/data/routes';
 import useProModal from '@/hooks/useProModal';
 import useHasMounted from '@/hooks/useHasMounted';
+import { randomInt } from '@/utils';
 import styles from './MusicLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema } from './consts';
 import PromptForm from '../../PromptForm';
 import GeneratedMedia from '../../GeneratedMedia';
+
+const placeholders = [
+  'Piano solo',
+  'Upbeat electric guitar',
+  'Energetic drum solo',
+  'Latin percussion ensemble',
+  'Chill lo-fi hip hop beat',
+];
 
 interface MusicItemProps {
   media: string;
@@ -33,6 +42,7 @@ const MusicItem = ({
 const MusicLayout = () => {
   const proModal = useProModal();
   const [music, setMusic] = useState<string[]>([]);
+  const [placeholder] = useState(placeholders[randomInt(placeholders.length)]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -76,7 +86,7 @@ const MusicLayout = () => {
         promptField={{
           id: 'prompt-field',
           name: 'prompt',
-          placeholder: 'Piano solo',
+          placeholder,
         }}
       />
       <GeneratedMedia

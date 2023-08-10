@@ -32,6 +32,8 @@ export const cobbleStyles = (
 
 export const absoluteUrl = (path: string) => `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 
+export const randomInt = (num: number) => Math.floor(Math.random() * num);
+
 export const errorCatch = (error: any): string => {
   if (error.response && error.response.data) {
     if (typeof error.response.data.message === 'object') {

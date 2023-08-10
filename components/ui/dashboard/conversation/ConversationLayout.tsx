@@ -12,11 +12,20 @@ import { toast } from 'react-hot-toast';
 import { CONVERSATION_ROUTE } from '@/data/routes';
 import useHasMounted from '@/hooks/useHasMounted';
 import useProModal from '@/hooks/useProModal';
+import { randomInt } from '@/utils';
 import styles from './ConversationLayout.module.scss';
 import Heading from '../../Heading';
 import { formSchema } from './consts';
 import PromptForm from '../../PromptForm';
 import ChatMessages from '../../ChatMessages';
+
+const placeholders = [
+  'How do you calculate the radius of the sun?',
+  'What are some synonyms for the word "genius"?',
+  'What did Nietzsche think about Dionysus?',
+  'List 5 ideas for a side hustle.',
+  'List 5 random facts about polar bears.',
+];
 
 interface ChatMessageProps {
   message: ChatCompletionRequestMessage;
@@ -32,6 +41,7 @@ const ChatMessage = ({
 
 const ConversationLayout = () => {
   const proModal = useProModal();
+  const [placeholder] = useState(placeholders[randomInt(placeholders.length)]);
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -81,7 +91,7 @@ const ConversationLayout = () => {
         promptField={{
           id: 'prompt-field',
           name: 'prompt',
-          placeholder: 'How do you calculate the radius of the sun?',
+          placeholder,
         }}
         buttonColor="bg-violet-500"
       />
