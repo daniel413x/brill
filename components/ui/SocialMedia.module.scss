@@ -3,5 +3,9 @@
 
   a {
     @apply p-4 bg-transparent;
+
+    &:hover {
+      @apply bg-white/10;
+    }
   }
 }

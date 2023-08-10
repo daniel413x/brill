@@ -6,11 +6,10 @@ import { Poppins } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 import {
   DASHBOARD_ROUTE,
-} from '@/data/routes';
-import { cn } from '@/lib/utils';
-import { SCSSModule } from '@/types';
-import { cobbleStyles } from '@/utils';
-import { dashboardSidebarLinks } from '@/data/arrays';
+} from '@/lib/data/routes';
+import { cn, cobbleStyles } from '@/lib/utils';
+import { SCSSModule } from '@/lib/types';
+import { dashboardSidebarLinks } from '@/lib/data/arrays';
 import defaultStyles from './Sidebar.module.scss';
 import FreeCounter from '../FreeCounter';
 import SocialMedia from '../SocialMedia';
@@ -66,7 +65,7 @@ const Sidebar = ({
           ))}
         </ul>
       </div>
-      <SocialMedia />
+      {isPro ? <SocialMedia /> : null}
       <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} />
     </div>
   );

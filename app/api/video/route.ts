@@ -1,7 +1,6 @@
 import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
-import { checkApiLimit, incrementApiLimit } from '@/lib/api-limit';
-import checkSubscription from '@/lib/checkSubscription';
+import { checkApiLimit, incrementApiLimit, checkSubscription } from '@/lib/db/methods';
 import { replicate } from '../config';
 
 export const POST = async (req: Request) => {

@@ -3,7 +3,7 @@
 import {
   Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon,
 } from 'lucide-react';
-import { ToolCard } from '@/types';
+import { ToolCard } from '@/lib/types';
 import * as routes from './routes';
 
 export const dashboardToolCards: ToolCard[] = [

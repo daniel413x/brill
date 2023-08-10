@@ -3,7 +3,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { ToolCard as ToolCardType } from '@/types';
+import { ToolCard as ToolCardType } from '@/lib/types';
 import styles from './ToolCard.module.scss';
 import { Card } from '../shadcn/card';
 

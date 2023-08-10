@@ -1,8 +1,8 @@
 .loader {
-  @apply p-8 h-full flex flex-col gap-y-4 items-center justify-center bg-muted;
+  @apply p-8 h-full flex flex-col gap-y-5 items-center justify-center bg-muted;
 
   .imageWrapper {
-    @apply w-10 h-10 relative animate-spin;
+    @apply w-8 h-8 relative animate-spin;
 
     img {
       @apply rounded-lg;
@@ -10,6 +10,6 @@
   }
 
   .label {
-    @apply text-sm font-black text-violet-400;
+    @apply text-sm text-violet-400;
   }
 }

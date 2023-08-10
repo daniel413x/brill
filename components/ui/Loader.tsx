@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
-import { cobbleStyles } from '@/utils';
-import { SCSSModule } from '@/types';
-import { cn } from '@/lib/utils';
+import { SCSSModule } from '@/lib/types';
+import { cn, cobbleStyles } from '@/lib/utils';
 import defaultStyles from './Loader.module.scss';
 
 const poppins = Poppins({
-  weight: '600',
+  weight: '400',
   subsets: ['latin'],
 });
 

@@ -1,4 +1,4 @@
-import { Children } from '@/types';
+import { Children } from '@/lib/types';
 import styles from './ModalBody.module.scss';
 
 interface ModalBodyProps {

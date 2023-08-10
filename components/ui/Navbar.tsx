@@ -1,7 +1,7 @@
 'use client';
 
 import { UserButton } from '@clerk/nextjs';
-import useHasMounted from '@/hooks/useHasMounted';
+import useHasMounted from '@/lib/hooks/useHasMounted';
 import MobileSidebar from './MobileSidebar';
 import styles from './Navbar.module.scss';
 

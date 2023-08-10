@@ -1,11 +1,11 @@
 'use client';
 
 import { Zap } from 'lucide-react';
-import { MAX_FREE_COUNTS } from '@/data/consts';
+import { MAX_FREE_COUNTS } from '@/lib/data/consts';
 import { Card, CardContent } from '@/components/ui/shadcn/card';
 import { Button } from '@/components/ui/shadcn/button';
 import { Progress } from '@/components/ui/shadcn/progress';
-import useProModal from '@/hooks/useProModal';
+import useProModal from '@/lib/hooks/useProModal';
 import styles from './FreeCounter.module.scss';
 
 interface FreeCounterProps {

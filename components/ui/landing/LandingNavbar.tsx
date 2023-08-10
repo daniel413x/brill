@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
-import { DASHBOARD_ROUTE, SIGNUP_ROUTE } from '@/data/routes';
+import { DASHBOARD_ROUTE, SIGNUP_ROUTE } from '@/lib/data/routes';
 import { Button } from '../shadcn/button';
 import styles from './LandingNavbar.module.scss';
 

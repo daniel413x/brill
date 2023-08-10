@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useAuth } from '@clerk/nextjs';
 import TypewriterComponent from 'typewriter-effect';
-import { DASHBOARD_ROUTE, SIGNIN_ROUTE } from '@/data/routes';
+import { DASHBOARD_ROUTE, SIGNIN_ROUTE } from '@/lib/data/routes';
 import { Button } from '../shadcn/button';
 import styles from './LandingHero.module.scss';
 

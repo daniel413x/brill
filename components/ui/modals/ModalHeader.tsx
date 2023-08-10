@@ -2,7 +2,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/shadcn/dialog';
-import { Children } from '@/types';
+import { Children } from '@/lib/types';
 import styles from './ModalHeader.module.scss';
 
 interface ModalHeaderProps {

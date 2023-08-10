@@ -1,6 +1,6 @@
 'use client';
 
-import { dashboardToolCards } from '@/data/arrays';
+import { dashboardToolCards } from '@/lib/data/arrays';
 import styles from './DashboardWelcome.module.scss';
 import ToolCard from './ToolCard';
 

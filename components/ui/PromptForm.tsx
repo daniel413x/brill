@@ -99,7 +99,6 @@ const PromptForm = ({
             )}
           />
         ))}
-
         <Button
           className={cn(styles.submitButton, buttonColor)}
           disabled={isSubmitting}

@@ -2,8 +2,8 @@
 
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import useProModal from '@/hooks/useProModal';
-import { dashboardToolCards } from '@/data/arrays';
+import useProModal from '@/lib/hooks/useProModal';
+import { dashboardToolCards } from '@/lib/data/arrays';
 import { Card } from '@/components/ui/shadcn/card';
 import {
   DialogFooter,

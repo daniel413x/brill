@@ -1,7 +1,7 @@
 'use client';
 
 import { Menu } from 'lucide-react';
-import useHasMounted from '@/hooks/useHasMounted';
+import useHasMounted from '@/lib/hooks/useHasMounted';
 import { Sheet, SheetContent, SheetTrigger } from './shadcn/sheet';
 import Sidebar from './dashboard/Sidebar';
 

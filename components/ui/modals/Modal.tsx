@@ -2,7 +2,7 @@ import {
   Dialog,
   DialogContent,
 } from '@/components/ui/shadcn/dialog';
-import { Children } from '@/types';
+import { Children } from '@/lib/types';
 
 interface ModalProps {
   children: Children;

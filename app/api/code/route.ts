@@ -1,8 +1,7 @@
 import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import { ChatCompletionRequestMessage } from 'openai';
-import { checkApiLimit, incrementApiLimit } from '@/lib/api-limit';
-import checkSubscription from '@/lib/checkSubscription';
+import { checkApiLimit, incrementApiLimit, checkSubscription } from '@/lib/db/methods';
 import { openaiConfig, openai } from '../config';
 
 const instruction: ChatCompletionRequestMessage = {

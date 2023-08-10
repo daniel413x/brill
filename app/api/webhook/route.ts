@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
-import prismadb from '@/lib/prismadb';
+import prismadb from '@/lib/db/prismadb';
 import stripe from '@/lib/stripe';
 
 export async function POST(req: Request) {
@@ -41,10 +41,7 @@ export async function POST(req: Request) {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string,
     );
-    console.log(subscription);
     if (subscription) {
-      console.log('if subscription');
-      // next try to fetch the userSubscription individually before updating it
       const sub = await prismadb.userSubscription.findUnique({
         where: {
           stripeSubscriptionId: subscription.id,
@@ -52,7 +49,6 @@ export async function POST(req: Request) {
       });
       if (sub) {
         await prismadb.userSubscription?.update({
-        // await prismadb.userSubscription?.update({
           where: {
             stripeSubscriptionId: subscription.id,
           },

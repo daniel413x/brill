@@ -5,7 +5,7 @@ import { Crisp } from 'crisp-sdk-web';
 
 const CrispChat = () => {
   useEffect(() => {
-    Crisp.configure('fa13dc2b-528f-4a1a-a659-469963fe51ae');
+    Crisp.configure(process.env.NEXT_PUBLIC_CRISP_CHAT_ID!);
   }, []);
   return null;
 };

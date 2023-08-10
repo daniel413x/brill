@@ -1,4 +1,8 @@
-import { SCSSModule } from '@/types';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { SCSSModule } from '@/lib/types';
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export const cobbleStyles = (
   defaultStyles: SCSSModule,
@@ -33,13 +37,3 @@ export const cobbleStyles = (
 export const absoluteUrl = (path: string) => `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 
 export const randomInt = (num: number) => Math.floor(Math.random() * num);
-
-export const errorCatch = (error: any): string => {
-  if (error.response && error.response.data) {
-    if (typeof error.response.data.message === 'object') {
-      return error.response.data.message[0];
-    }
-    return error.response.data.message;
-  }
-  return error.message;
-};

@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { Metadata } from 'next';
-import { Children } from '@/types';
+import { Children } from '@/lib/types';
 import Sidebar from '@/components/ui/dashboard/Sidebar';
 import Navbar from '@/components/ui/Navbar';
-import { getApiLimitCount } from '@/lib/api-limit';
-import checkSubscription from '@/lib/checkSubscription';
 import CrispProvider from '@/components/providers/CrispProvider';
+import { getApiLimitCount, checkSubscription } from '@/lib/db/methods';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {

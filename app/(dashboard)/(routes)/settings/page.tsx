@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import checkSubscription from '@/lib/checkSubscription';
+import { checkSubscription } from '@/lib/db/methods';
 import SettingsLayout from '@/components/ui/dashboard/settings/SettingsLayout';
 
 export const metadata: Metadata = {

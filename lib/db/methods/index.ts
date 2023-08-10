@@ -1,7 +1,31 @@
 import { auth } from '@clerk/nextjs';
+import { MAX_FREE_COUNTS } from '@/lib/data/consts';
+import prismadb from '../prismadb';
 
-import prismadb from '@/lib/prismadb';
-import { MAX_FREE_COUNTS } from '@/data/consts';
+export const checkSubscription = async () => {
+  const { userId } = auth();
+  if (!userId) {
+    return false;
+  }
+  const userSubscription = await prismadb.userSubscription.findUnique({
+    where: {
+      userId,
+    },
+    select: {
+      stripeSubscriptionId: true,
+      stripeCurrentPeriodEnd: true,
+      stripeCustomerId: true,
+      stripePriceId: true,
+    },
+  });
+  if (!userSubscription) {
+    return false;
+  }
+  const DAY_IN_MS = 86_400_000;
+  const isValid = userSubscription.stripePriceId
+    && userSubscription.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now();
+  return !!isValid;
+};
 
 export const incrementApiLimit = async () => {
   const { userId } = auth();
